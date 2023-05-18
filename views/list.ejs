@@ -1,31 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+<%- include("header") -%>
 
-    <title>Todo App</title>
 
-  </head>
-  <body>
-    <h1>It's a <%=kindOfDay%> !</h1>
 
-    <ul>
-      <li>Buy Food</li>
-      <li>Cook Food</li>
-      <li>Eat Food</li>
+    <div class="box" id="heading">
+      <h1><%= listTitle %></h1>  
+    </div>
 
+    <div class="box">
+      <!-- FOR LOOP - creating a "li" for each item in items collection. -->
       <% for(i=0;i < newListItems.length; i++){ %>
-      <li><%= newListItems[i] %></li>
-      <% } %>
+      <div class="item">
+        <input type="checkbox">
+        <p><%= newListItems[i] %></p>
+      </div>  
+      <% } %>  
       
-    </ul>
+      <form class="item" action="/" method="post">
+        <input type="text" name="newItem" placeholder="New Item" autocomplete="off"/>
+        <button type="submit" name="list" value=<%=listTitle%>>+</button>
+      </form>
+    </div>
+    
+  <%- include("footer") -%>
+  
+  
 
-    <form action="/" method="post">
-      <input type="text" name="newItem" placeholder="Add Todo" />
-      <button type="submit" name="button">Submit</button>
-    </form>
-  </body>
-</html>
